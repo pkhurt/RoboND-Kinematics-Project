@@ -20,19 +20,28 @@ from sympy import *
 
 
 def handle_calculate_IK(req):
+    """
+    This function calculates the inverse kinematics for the Robot arm KUKA KR210.
+    """
     rospy.loginfo("Received %s eef-poses from the plan" % len(req.poses))
     if len(req.poses) < 1:
         print "No valid poses received"
         return -1
     else:
 
-        ### Your FK code here
-        # Create symbols
-	#
+        ### Your Forward Kinematics code here
+        #
+        # Create symbols for Denavit-Hartenberg parameters (DHP)
+        #
+	q1, q2, q3, q4, q5, q6, q7 = symbols('q1:8') # theta values
+        d1, d2, d3, d4, d5, d6, d7 = symbols('d1:8') # link lengths
+        a0, a1, a2, a3, a4, a5, a6 = symbols('a0:7') # link offsets
+        alpha0, alpha1, alpha2, alpha3, alpha4, alpha5, alpha6 = symbols('alpha0:7') # twist angles of Z axis
+
 	#
 	# Create Modified DH parameters
 	#
-	#
+        #
 	# Define Modified DH Transformation matrix
 	#
 	#
